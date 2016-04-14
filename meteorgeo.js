@@ -1,35 +1,29 @@
-// Write your package code here!
 
-// Variables exported by this module can be imported by other packages and
-// applications. See meteorgeo-tests.js for an example of importing.
-//import { HTTP } from 'meteor/http';
 
-//export const name = 'meteorgeo';
-
-export function sra (sra,callback){
-	var id = [];
-	var id2 = [];
-	var url = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&retMode=JSON&term='+sra;
-	HTTP.call('GET',url,{timeout: 30000}, function(err,res){
-		if (err) console.log(err);
-		else
-		{	
-			var json = JSON.parse(xmlToJson(res.content));
-			id.push(json.eSearchResult.IdList.Id)
-			var url1='http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id='+id.join(',');
-			HTTP.call('GET',url1,{timeout: 30000}, function(err,result){
-				if (err) console.log(err);
-				else
-				{
-					var json2 = JSON.parse(xmlToJson(result.content))
-					id2.push(json2.EXPERIMENT_PACKAGE_SET.EXPERIMENT_PACKAGE)
-					callback({record:id2[0],id:id[0]});
-				}
-			});
-			//callback({result: json.eSearchResult.IdList.Id})
-		}
-	});
+export function sra(sra){
+   return new Promise((resolve,reject) => {
+      var url = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=sra&retMode=JSON&term='+sra;
+      HTTP.call('GET',url,{timeout: 30000}, function(err,res){
+         if (err) reject(err.reason);
+         else{
+            var id = [];
+            var json = JSON.parse(xmlToJson(res.content));
+            id.push(json.eSearchResult.IdList.Id)
+            var url1='http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id='+id.join(',');
+            HTTP.call('GET',url1,{timeout: 30000}, function(err,result){
+               if (err) console.log(err);
+               else{
+                  var id2=[]
+                  var json2 = JSON.parse(xmlToJson(result.content))
+                  id2.push(json2.EXPERIMENT_PACKAGE_SET.EXPERIMENT_PACKAGE)
+                  resolve({SRAid:id[0],Record:id2[0]})
+               }
+            });
+         }
+      });
+   })
 }
+
 
 var xmlToJson = function(xml) {
 	//console.log($.parseXML(xml));

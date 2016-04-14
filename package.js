@@ -15,6 +15,7 @@ Package.onUse(function(api) {
   api.use('ecmascript@0.4.1');
   api.use("templating@1.1.7",'client');
   api.use('http@1.1.3','client');
+  api.use('promise@0.6.6','client');
   //api.use(["jquery@1.11.7"], 'client');
   api.mainModule('meteorgeo.js');
   api.export('sra','client');
