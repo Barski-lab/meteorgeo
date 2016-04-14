@@ -13,13 +13,13 @@ meteor add bharath90:meteorgeo
 To access the information of experiments with respect to an example SRP accession number SRP034076:
 
 ```sh
-sra('SRP034076',function(output){
-    	console.log(output.record);
-    	console.log(output.id);
+sra('SRP034076').then (function(d){
+    	console.log(d.Record);
+    	console.log(d.SRAid);
     });
     //instead of SRP number any accession number like SRA, SRP, GSE*, GSM* accession number can also be used.
-    //'record' is in JSON format with number of experiments related to that particular SRP number
-    //'id' is the record id
+    //'Record' is in JSON format with number of experiments related to that particular SRP number
+    //'SRAid' is the record id; it is not the accession number
 ```
 
 ### Acknowledgment
