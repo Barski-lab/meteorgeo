@@ -11,7 +11,7 @@ export function sra(sra){
             id.push(json.eSearchResult.IdList.Id)
             var url1='http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=sra&id='+id.join(',');
             HTTP.call('GET',url1,{timeout: 30000}, function(err,result){
-               if (err) console.log(err);
+               if (err) reject(err.reason);
                else{
                   var id2=[]
                   var json2 = JSON.parse(xmlToJson(result.content))
