@@ -3,7 +3,7 @@ A  meteor package to download SRA database record from [NCBI] National Centre fo
 ##### Client side ONLY
 Built over the [NCBI's E-Util API] 
 ### Version
-0.0.1
+0.0.2
 
 ### Installation
 ```sh
