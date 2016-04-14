@@ -2,7 +2,7 @@ Package.describe({
   name: 'bharath90:meteorgeo',
   version: '0.0.1',
   // Brief, one-line summary of the package.
-  summary: 'SRA database query client-side API to retrieve only a particular record relating to SRA,SRP,GSE accession number',
+  summary: 'SRA database query client-side API',
   // URL to the Git repository containing the source code for this package.
   git: 'https://github.com/bharath-cchmc/bharath90-meteorgeo',
   // By default, Meteor will default to using README.md for documentation.
@@ -12,10 +12,10 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.3.1');
-  api.use('ecmascript');
-  api.use("templating",'client');
-  api.use('http','client');
-  api.use(["jquery@1.11.7"], 'client');
+  api.use('ecmascript@0.4.1');
+  api.use("templating@1.1.7",'client');
+  api.use('http@1.1.3','client');
+  //api.use(["jquery@1.11.7"], 'client');
   api.mainModule('meteorgeo.js');
   api.export('sra','client');
 });
