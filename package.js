@@ -21,6 +21,6 @@ Package.onUse(function(api) {
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('bharath90:meteorgeo@0.0.1');
+  api.use('bharath90:meteorgeo@0.0.3');
   api.mainModule('meteorgeo-tests.js',['client','server']);
 });
