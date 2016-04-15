@@ -24,6 +24,8 @@ export function sra(sra){
    })
 }
 
+//FUNCTION xml2json USED FROM
+//https://code.msdn.microsoft.com/vstudio/People-App-7b1abc4a/sourcecode?fileId=124606&pathId=1753384050
 
 var xmlToJson = function(xml) {
 	//console.log($.parseXML(xml));
