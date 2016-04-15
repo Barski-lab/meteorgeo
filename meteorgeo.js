@@ -24,8 +24,12 @@ export function sra(sra){
    })
 }
 
-//FUNCTION xml2json USED FROM
-//https://code.msdn.microsoft.com/vstudio/People-App-7b1abc4a/sourcecode?fileId=124606&pathId=1753384050
+/*    This function below is licensed under Creative Commons GNU LGPL License. 
+    License: http://creativecommons.org/licenses/LGPL/2.1/ 
+    Version: 0.9 
+    Author:  Stefan Goessner/2006 
+    Web:     http://goessner.net/  
+*/ 
 
 var xmlToJson = function(xml) {
 	//console.log($.parseXML(xml));
